@@ -1,4 +1,4 @@
-## Explain the Primary Key and Foreign Key concepts in PostgreSQL.
+## 1. Explain the Primary Key and Foreign Key concepts in PostgreSQL.
 
 ### Primary Key:
 Primary Key হলো একটি টেবিলের কলাম (বা অনেকগুলি কলাম), যেটা টেবিলের প্রতিটি সারিকে অনন্যভাবে শনাক্ত করে। একটি টেবিলে শুধুমাত্র একটি Primary Key থাকতে পারে।
@@ -24,7 +24,8 @@ CREATE TABLE enrollments (
 );
 ```
 
-## What is the difference between the VARCHAR and CHAR data types?
+
+## 2. What is the difference between the VARCHAR and CHAR data types?
 
 | বৈশিষ্ট্য         | `CHAR(n)`                         | `VARCHAR(n)`                     |
 |----------------|-----------------------------------|----------------------------------|
@@ -41,7 +42,8 @@ INSERT INTO demo_char VALUES ('Hi'); -- স্টোর করে: 'Hi   '
 INSERT INTO demo_varchar VALUES ('Hi'); -- স্টোর করে: 'Hi'
 ```
 
-## Explain the purpose of the WHERE clause in a SELECT statement.
+
+## 3. Explain the purpose of the WHERE clause in a SELECT statement.
 `WHERE` ক্লজ SQL-এ ডেটা ফিল্টার করার জন্য ব্যবহৃত হয়, যা কেবলমাত্র নির্দিষ্ট শর্ত পূরণকারী রেকর্ডগুলো রিটার্ন করে।
 
 **উদাহরণ:**
@@ -52,7 +54,8 @@ WHERE age > 18;
 
 এটি শুধুমাত্র ১৮ বছরের বেশি বয়সী শিক্ষার্থীদের রিটার্ন করবে।
 
-## What are the LIMIT and OFFSET clauses used for?
+
+## 4. What are the LIMIT and OFFSET clauses used for?
 ### LIMIT:
 নির্দিষ্ট সংখ্যক রেকর্ড রিটার্ন করতে ব্যবহৃত হয়।
 
@@ -76,3 +79,16 @@ LIMIT 5 OFFSET 10;
 ```
 
 এটি প্রথম ১০টি রেকর্ড বাদ দিয়ে পরবর্তী ৫টি রিটার্ন করবে।
+
+## 5. How can you modify data using UPDATE statements?
+`UPDATE` স্টেটমেন্টের মাধ্যমে বিদ্যমান রেকর্ডের তথ্য পরিবর্তন করা যায়। সাধারণত `WHERE` ক্লজসহ এটি ব্যবহার করা হয় যাতে নির্দিষ্ট রেকর্ড টার্গেট করার যায়।
+
+**উদাহরণ:**
+```sql
+UPDATE students
+SET age = 21
+WHERE student_id = 1;
+```
+
+এটি `student_id = 1` শিক্ষার্থীর বয়স ২১ করে দিবে।
+
