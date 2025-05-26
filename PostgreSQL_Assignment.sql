@@ -51,7 +51,7 @@ SELECT * FROM Rangers;
 SELECT * FROM Species;
 
 -- View All Sightings
-select * from Sightings;
+SELECT * FROM Sightings;
 
 
 
