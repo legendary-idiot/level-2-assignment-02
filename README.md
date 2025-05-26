@@ -16,10 +16,7 @@ CREATE TABLE students (
 Foreign Key এমন একটি কলাম যা অন্য একটি টেবিলের Primary Key-এর সাথে সম্পর্ক তৈরি করে। এটি অনেকগুলি টেবিল এর মধ্যে রিলেশন তৈরি করতে ব্যবহৃত হয়।
 
 **উদাহরণ:**
-```
-sql
-Copy
-Edit
+```sql
 CREATE TABLE enrollments (
     id SERIAL PRIMARY KEY,
     student_id INT REFERENCES students(student_id),
@@ -27,3 +24,55 @@ CREATE TABLE enrollments (
 );
 ```
 
+## What is the difference between the VARCHAR and CHAR data types?
+
+| বৈশিষ্ট্য         | `CHAR(n)`                         | `VARCHAR(n)`                     |
+|----------------|-----------------------------------|----------------------------------|
+| দৈর্ঘ্য            | নির্দিষ্ট (Fixed Length)              | পরিবর্তনশীল (Variable Length)     |
+| স্টোরেজ         | সবসময় `n` ক্যারেক্টার স্টোর করে     | যতটুকু প্রয়োজন ততটুকু স্টোর করে    |
+| পারফরম্যান্স      | সামান্য বেশি দ্রুত (কিছু ক্ষেত্রে)       |  মেমোরি বাঁচায়                     |
+
+**উদাহরণ:**
+```sql
+-- CHAR(5)
+INSERT INTO demo_char VALUES ('Hi'); -- স্টোর করে: 'Hi   '
+
+-- VARCHAR(5)
+INSERT INTO demo_varchar VALUES ('Hi'); -- স্টোর করে: 'Hi'
+```
+
+## Explain the purpose of the WHERE clause in a SELECT statement.
+`WHERE` ক্লজ SQL-এ ডেটা ফিল্টার করার জন্য ব্যবহৃত হয়, যা কেবলমাত্র নির্দিষ্ট শর্ত পূরণকারী রেকর্ডগুলো রিটার্ন করে।
+
+**উদাহরণ:**
+```sql
+SELECT * FROM students
+WHERE age > 18;
+```
+
+এটি শুধুমাত্র ১৮ বছরের বেশি বয়সী শিক্ষার্থীদের রিটার্ন করবে।
+
+## What are the LIMIT and OFFSET clauses used for?
+### LIMIT:
+নির্দিষ্ট সংখ্যক রেকর্ড রিটার্ন করতে ব্যবহৃত হয়।
+
+```sql
+SELECT * FROM users LIMIT 5;
+```
+
+### OFFSET:
+নির্দিষ্ট সংখ্যক সারি স্কিপ করতে ব্যবহৃত হয়।
+
+```sql
+SELECT * FROM users OFFSET 5;
+```
+
+
+**উদাহরণ:**
+```sql
+SELECT * FROM students
+ORDER BY student_id
+LIMIT 5 OFFSET 10;
+```
+
+এটি প্রথম ১০টি রেকর্ড বাদ দিয়ে পরবর্তী ৫টি রিটার্ন করবে।
